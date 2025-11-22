@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_your_profile"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/please_fill_details"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp"/>
+
+        <EditText
+            android:id="@+id/etFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/first_name"/>
+        <EditText
+            android:id="@+id/etLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/last_name"/>
+        <EditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/age"
+            android:inputType="number"/>
+        <EditText
+            android:id="@+id/etHobby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hobby"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sex"
+            android:layout_marginTop="16dp"/>
+        <RadioGroup
+            android:id="@+id/rgSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/rbMale" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/male"/>
+            <RadioButton android:id="@+id/rbFemale" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/female"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/marital_status"
+            android:layout_marginTop="16dp"/>
+        <RadioGroup
+            android:id="@+id/rgMaritalStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/rbSingle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/single"/>
+            <RadioButton android:id="@+id/rbMarried" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/married"/>
+            <RadioButton android:id="@+id/rbWidowed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/widowed"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/do_you_receive_pension"
+            android:layout_marginTop="16dp"/>
+        <RadioGroup
+            android:id="@+id/rgPension"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/rbPensionYes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yes"/>
+            <RadioButton android:id="@+id/rbPensionNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no" android:checked="true"/>
+        </RadioGroup>
+        <LinearLayout
+            android:id="@+id/layoutPensionDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <EditText
+                android:id="@+id/etPensionAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/monthly_pension_amount"
+                android:inputType="numberDecimal"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/do_you_have_insurance"
+            android:layout_marginTop="16dp"/>
+        <RadioGroup
+            android:id="@+id/rgInsurance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/rbInsuranceYes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yes"/>
+            <RadioButton android:id="@+id/rbInsuranceNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no" android:checked="true"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/layoutInsuranceDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <EditText
+                android:id="@+id/etInsuranceCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/insurance_company_name"/>
+            <EditText
+                android:id="@+id/etInsurancePlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/premium_plan_name"/>
+            <EditText
+                android:id="@+id/etInsurancePremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/monthly_premium_amount"
+                android:inputType="numberDecimal"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSaveProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save_profile"
+            android:layout_marginTop="24dp"/>
+
+    </LinearLayout>
+</ScrollView>

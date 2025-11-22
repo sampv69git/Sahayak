@@ -1,0 +1,144 @@
+<resources>
+    <string name="app_name">Sahayak</string>
+    <string name="app_bar_title">Senior Care</string>
+
+    <string name="choose_language">Choose Language:</string>
+    <string-array name="languages">
+        <item>English</item>
+        <item>ಕನ್ನಡ (Kannada)</item>
+        <item>తెలుగు (Telugu)</item>
+        <item>தமிழ் (Tamil)</item>
+        <item>മലയാളം (Malayalam)</item>
+    </string-array>
+    <string-array name="language_codes">
+        <item>en</item>
+        <item>kn</item>
+        <item>te</item>
+        <item>ta</item>
+        <item>ml</item>
+    </string-array>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
+
+    <string name="register_new_user">Register New User</string>
+    <string name="please_enter_username">Please enter username</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="invalid_credentials">Invalid credentials</string>
+    <string name="registration_successful">Registration successful! Please login.</string>
+    <string name="please_fill_all_fields">Please fill in all fields</string>
+
+    <string name="create_your_profile">Create Your Profile</string>
+    <string name="please_fill_details">Please fill in your details to get started.</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="age">Age</string>
+    <string name="hobby">Hobby (e.g., Reading, Gardening)</string>
+    <string name="sex">Sex:</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="marital_status">Marital Status:</string>
+    <string name="single">Single</string>
+    <string name="married">Married</string>
+    <string name="widowed">Widowed</string>
+
+    <string name="do_you_receive_pension">Do you receive a pension?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="monthly_pension_amount">Monthly Pension Amount (e.g., 15000)</string>
+
+    <string name="do_you_have_insurance">Do you have life insurance?</string>
+    <string name="insurance_company_name">Insurance Company Name</string>
+    <string name="premium_plan_name">Premium Plan Name</string>
+    <string name="monthly_premium_amount">Monthly Premium Amount</string>
+
+    <string name="save_profile">Save Profile</string>
+    <string name="profile_toast_saved">Profile Saved!</string>
+    <string name="profile_toast_fill_fields">Please fill in all fields</string>
+
+    <string name="welcome">Welcome!</string>
+    <string name="pension">Pension</string>
+    <string name="insurance">Insurance</string>
+    <string name="emergency">Emergency Contact</string>
+    <string name="talkie">Talkie</string>
+    <string name="profile">Profile</string>
+    <string name="sos">SOS</string>
+
+    <string name="pension_details">Pension Details</string>
+    <string name="pension_status_yes">You are receiving a monthly pension of: ₹%1$s</string>
+    <string name="pension_status_no">You have indicated that you do not receive a pension.</string>
+    <string name="pension_history_2025">2025 Pension History</string>
+    <string name="status_prefix">Status:</string>
+    <string name="status_upcoming">Upcoming</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_credited">Credited</string>
+
+    <string name="insurance_details">Insurance Details</string>
+    <string name="insurance_status_no">You have indicated that you do not have an active insurance plan.</string>
+    <string name="insurance_company">Company:</string>
+    <string name="insurance_plan">Plan:</string>
+    <string name="insurance_premium">Premium:</string>
+    <string name="loading">Loading...</string>
+
+    <string name="emergency_contacts">Emergency Contacts</string>
+    <string name="call_police">Call Police (100)</string>
+    <string name="call_ambulance">Call Ambulance (102)</string>
+    <string name="family_contacts">Family Contacts</string>
+    <string name="call_son">Call Son</string>
+    <string name="call_daughter">Call Daughter</string>
+    <string name="call_spouse">Call Spouse</string>
+    <string name="set_contacts">Set Family Contacts</string>
+    <string name="dialog_set_contacts_title">Set Personal Contacts</string>
+    <string name="son_phone_number">Son\'s Phone Number</string>
+    <string name="daughter_phone_number">Daughter\'s Phone Number</string>
+    <string name="spouse_phone_number">Spouse\'s Phone Number</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="contacts_saved">Contacts Saved!</string>
+    <string name="number_not_set">Number not set</string>
+
+    <string name="talkie_feature">Talkie Feature</string>
+    <string name="what_would_you_like_to_do">What would you like to do?</string>
+    <string name="read_indian_stories">Read Indian Stories</string>
+    <string name="listen_to_spiritual_wisdom">Listen to Spiritual Wisdom</string>
+
+    <string name="read_stories">Read Stories</string>
+    <string name="story_ram_title">The Story of Ram (Ramayan)</string>
+    <string name="story_mahabharath_title">The Pandavas\' Exile (Mahabharat)</string>
+    <string name="story_text_placeholder">Select a story to read.</string>
+    <string name="story_ram_text"> The Ramayan begins in the peaceful kingdom of Ayodhya, where Prince Rama is born to King Dasharatha. Rama is loved for his humility, courage, and flawless character. When he wins Sita’s hand by lifting and breaking Lord Shiva’s bow, their marriage becomes a symbol of love and purity
+        But destiny tests Rama when his stepmother Kaikeyi demands that he be exiled for 14 years so her son Bharata becomes king. Rama accepts the decision calmly, believing that a promise must always be honored. Sita and Lakshmana choose to go with him, showing devotion stronger than comfort or fear.
+        In the forest they meet sages, demons, and holy beings. One day, the demoness Shurpanakha tries to harm Sita, leading to a series of events where her brother, Ravana, the mighty king of Lanka, kidnaps Sita using deception. Rama and Lakshmana search endlessly, refusing to give up hope.
+        They soon meet Hanuman, whose devotion to Rama becomes legendary. Hanuman leaps across the ocean, finds Sita in Ashoka Vatika, and gives her strength when she feels imprisoned and alone. With the help of the vanara king Sugriva, a massive bridge is built to Lanka.
+        The war between Rama and Ravana is intense and filled with supernatural power. After days of fierce battle, Rama defeats Ravana and rescues Sita. They return to Ayodhya, where Rama is crowned king, symbolizing that patience, truth, and righteousness always win, even when the journey is long and difficult.
+        The Ramayan teaches that duty and virtue can guide a person through every hardship and that love, loyalty, and courage create paths even through darkness.</string>
+    <string name="story_mahabharath_text">The Mahabharat is the vast story of two branches of the same royal family — the Pandavas and the Kauravas. The Pandavas, sons of Pandu, are known for their strength and integrity: Yudhishthira the just, Bhima the powerful, Arjuna the master archer, and the twins Nakula and Sahadeva known for grace and wisdom. The Kauravas, led by Duryodhana, grow with jealousy and ambition burning in their hearts.
+    Tension rises when the Pandavas build a magnificent kingdom at Indraprastha, making Duryodhana insecure and angry. He invites Yudhishthira to a deceitful dice game, where with trickery, the Pandavas lose everything — their kingdom, their wealth, and even their freedom. They are forced into exile for 13 long years, during which they face trials, build alliances, and strengthen their resolve.
+    When the exile ends, the Pandavas ask only for a small portion of their kingdom. Duryodhana arrogantly refuses, saying he will not give even land “the size of a needle’s tip.” War becomes inevitable.
+    As the armies gather at Kurukshetra, Arjuna loses his courage seeing his own family, teachers, and friends standing on both sides. At this moment, Krishna reveals the teachings of the Bhagavad Gita, reminding Arjuna that one must stand for justice without being controlled by fear or attachment.
+    The battlefield becomes a place of heroism and tragedy. Great warriors like Bhishma, Drona, Karna, Abhimanyu, and Ghatotkacha fall. Every day of the war brings loss, sacrifice, and harsh realizations about ego, pride, and destiny.
+    In the end, the Pandavas win, but it is a victory mixed with pain. The Mahabharat teaches that unchecked greed destroys even the strongest, while truth and righteousness, though slower, always rise again. It shows that dharma is not easy to follow, but it is the only path that leads to peace.</string>
+
+    <string name="listen_to_wisdom">Listen to Wisdom</string>
+    <string name="wisdom_of_the_gita">Speak Wisdom of the Gita</string>
+    <string name="wisdom_of_the_vedas">Speak Wisdom of the Vedas</string>
+    <string name="gita_wisdom">The soul is neither born, nor does it die. You have the right to work, but never to the fruit of work.</string>
+    <string name="veda_wisdom">Truth is one, but the wise speak of it in many ways. Awaken your own mind.</string>
+    <string name="tts_init_failed">Text-to-Speech Initialization failed</string>
+    <string name="tts_lang_not_supported">Language not supported by TTS</string>
+
+    <string name="your_profile">Your Profile</string>
+    <string name="log_out">Log Out</string>
+    <string name="logout_confirm_title">Log Out</string>
+    <string name="logout_confirm_message">Are you sure you want to log out?</string>
+    <string name="welcome_greeting">Namaste, %1$s 🙏</string>
+    <string name="app_subtitle">Comprehensive Support for Senior Citizens</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="funzone">Funzone</string>
+    <string name="game_over_win">Game Over! Player %1$s wins!</string>
+    <string name="game_over_draw">Game Over! It is a draw.</string>
+    <string name="game_restart">Restart Game</string>
+    <string name="game_status_turn">Player %1$s\'s turn</string>
+</resources>

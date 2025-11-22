@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/talkie_feature"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/what_would_you_like_to_do"
+        android:textSize="18sp"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnReadStories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/read_indian_stories" />
+
+    <Button
+        android:id="@+id/btnListenWisdom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/listen_to_spiritual_wisdom" />
+
+</LinearLayout>
