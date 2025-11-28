@@ -32,14 +32,24 @@ class ProfileFragment : Fragment() {
 
         // Load data
         val prefs: SharedPreferences = activity?.getSharedPreferences("SeniorCareApp", Context.MODE_PRIVATE)!!
-        val firstName = prefs.getString("FIRST_NAME", "")
-        val lastName = prefs.getString("LAST_NAME", "")
+
+        // --- UPDATED LOGIC: Get Current User First ---
+        val currentUser = prefs.getString("CURRENT_USER", "") ?: ""
+
+        // Fetch data specifically for this user
+        val firstName = prefs.getString("FIRST_NAME_$currentUser", "")
+        val lastName = prefs.getString("LAST_NAME_$currentUser", "")
+        val age = prefs.getString("AGE_$currentUser", "N/A")
+        val sex = prefs.getString("SEX_$currentUser", "N/A")
+        val hobby = prefs.getString("HOBBY_$currentUser", "N/A")
+        val maritalStatus = prefs.getString("MARITAL_STATUS_$currentUser", "N/A")
+        // ---------------------------------------------
 
         tvName.text = "$firstName $lastName"
-        tvAge.text = "${getString(R.string.age)}: ${prefs.getString("AGE", "N/A")}"
-        tvSex.text = "${getString(R.string.sex)} ${prefs.getString("SEX", "N/A")}"
-        tvHobby.text = "${getString(R.string.hobby)}: ${prefs.getString("HOBBY", "N/A")}"
-        tvMarital.text = "${getString(R.string.marital_status)}: ${prefs.getString("MARITAL_STATUS", "N/A")}"
+        tvAge.text = "${getString(R.string.age)}: $age"
+        tvSex.text = "${getString(R.string.sex)} $sex"
+        tvHobby.text = "${getString(R.string.hobby)}: $hobby"
+        tvMarital.text = "${getString(R.string.marital_status)}: $maritalStatus"
 
         // Edit Profile Button
         btnEditProfile.setOnClickListener {
@@ -53,9 +63,7 @@ class ProfileFragment : Fragment() {
                 .setMessage(getString(R.string.logout_confirm_message))
                 .setPositiveButton(getString(R.string.yes)) { _, _ ->
 
-                    // --- THIS IS THE FIX ---
                     // 1. Set the logged in flag to false
-                    // We DO NOT call .clear() anymore
                     prefs.edit().putBoolean("IS_LOGGED_IN", false).apply()
 
                     // 2. Go back to the LoginActivity

@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.sahayak.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Apply the saved language
+        // Apply language
         LocaleHelper.setLocale(this)
 
         setContentView(R.layout.activity_main)
@@ -23,8 +22,13 @@ class MainActivity : AppCompatActivity() {
         prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
         if (savedInstanceState == null) {
-            // Check if profile is already complete
-            val isProfileComplete = prefs.getBoolean("PROFILE_COMPLETE", false)
+            // --- UPDATED PART ---
+            // 1. Get the current user's name
+            val currentUser = prefs.getString("CURRENT_USER", "")
+
+            // 2. Check if THIS specific user has completed their profile
+            val isProfileComplete = prefs.getBoolean("PROFILE_COMPLETE_$currentUser", false)
+
             if (isProfileComplete) {
                 // If yes, go straight to the dashboard
                 showFragment(WelcomeFragment())
@@ -32,17 +36,17 @@ class MainActivity : AppCompatActivity() {
                 // If no, force user to create a profile
                 showFragment(CreateProfileFragment())
             }
+            // --------------------
         }
     }
 
     fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
+            .addToBackStack(null) // Keep back stack behavior if desired, or remove if you want to block going back
             .commit()
     }
 
-    // This is required to apply the language
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase))
     }

@@ -23,10 +23,17 @@ class PensionFragment : Fragment() {
         val tvHistoryTitle: TextView = view.findViewById(R.id.tvPensionHistoryTitle)
 
         val prefs = activity?.getSharedPreferences("SeniorCareApp", Context.MODE_PRIVATE)
-        val hasPension = prefs?.getBoolean("HAS_PENSION", false) ?: false
+
+        // --- UPDATED LOGIC ---
+        // 1. Get the current user
+        val currentUser = prefs?.getString("CURRENT_USER", "") ?: ""
+
+        // 2. Check if THIS specific user has pension
+        val hasPension = prefs?.getBoolean("HAS_PENSION_$currentUser", false) ?: false
 
         if (hasPension) {
-            val amount = prefs?.getString("PENSION_AMOUNT", "N/A")
+            // 3. Get the amount for THIS specific user
+            val amount = prefs?.getString("PENSION_AMOUNT_$currentUser", "N/A")
             tvStatus.text = getString(R.string.pension_status_yes, amount)
 
             // Create dummy history for 2025
@@ -48,12 +55,20 @@ class PensionFragment : Fragment() {
             rvHistory.layoutManager = LinearLayoutManager(activity)
             rvHistory.adapter = PensionHistoryAdapter(history)
 
+            // Make sure list is visible
+            tvHistoryTitle.visibility = View.VISIBLE
+            rvHistory.visibility = View.VISIBLE
+
         } else {
-            // No pension
+            // No pension for this user
             tvStatus.text = getString(R.string.pension_status_no)
+
+            // Hide the list and title
             tvHistoryTitle.visibility = View.GONE
             rvHistory.visibility = View.GONE
         }
+        // ---------------------
+
         return view
     }
 }

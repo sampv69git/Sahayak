@@ -22,20 +22,43 @@ class InsuranceFragment : Fragment() {
         val tvPremium: TextView = view.findViewById(R.id.tvInsurancePremium)
 
         val prefs = activity?.getSharedPreferences("SeniorCareApp", Context.MODE_PRIVATE)
-        val hasInsurance = prefs?.getBoolean("HAS_INSURANCE", false) ?: false
+
+        // --- UPDATED LOGIC ---
+        // 1. Get the current user
+        val currentUser = prefs?.getString("CURRENT_USER", "") ?: ""
+
+        // 2. Check if THIS specific user has insurance
+        val hasInsurance = prefs?.getBoolean("HAS_INSURANCE_$currentUser", false) ?: false
 
         if (hasInsurance) {
-            tvStatus.visibility = View.GONE // No status, just show details
-            tvCompany.text = "${getString(R.string.insurance_company)} ${prefs?.getString("INSURANCE_COMPANY", "N/A")}"
-            tvPlan.text = "${getString(R.string.insurance_plan)} ${prefs?.getString("INSURANCE_PLAN", "N/A")}"
-            tvPremium.text = "${getString(R.string.insurance_premium)} ${prefs?.getString("INSURANCE_PREMIUM", "N/A")}"
+            tvStatus.visibility = View.GONE // No status text needed if we have data
+
+            // 3. Fetch specific details for THIS user
+            val company = prefs?.getString("INSURANCE_COMPANY_$currentUser", "N/A")
+            val plan = prefs?.getString("INSURANCE_PLAN_$currentUser", "N/A")
+            val premium = prefs?.getString("INSURANCE_PREMIUM_$currentUser", "N/A")
+
+            tvCompany.text = "${getString(R.string.insurance_company)} $company"
+            tvPlan.text = "${getString(R.string.insurance_plan)} $plan"
+            tvPremium.text = "${getString(R.string.insurance_premium)} $premium"
+
+            // Ensure details are visible
+            tvCompany.visibility = View.VISIBLE
+            tvPlan.visibility = View.VISIBLE
+            tvPremium.visibility = View.VISIBLE
+
         } else {
-            // No insurance
+            // No insurance for this user
             tvStatus.text = getString(R.string.insurance_status_no)
+            tvStatus.visibility = View.VISIBLE
+
+            // Hide the details
             tvCompany.visibility = View.GONE
             tvPlan.visibility = View.GONE
             tvPremium.visibility = View.GONE
         }
+        // ---------------------
+
         return view
     }
 }

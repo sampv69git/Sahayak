@@ -3,7 +3,7 @@ package com.example.sahayak
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences // <-- Make sure this is imported
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -13,30 +13,24 @@ import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
 
-    // Define SharedPreferences at the class level
     private lateinit var prefs: SharedPreferences
     private val PREFS_NAME = "SeniorCareApp"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // 1. Apply the saved language *before* setting the view
+        // Apply language
         LocaleHelper.setLocale(this)
 
-        // --- THIS IS THE FIX (Part 1) ---
-        // Get SharedPreferences
         prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
         // Check if user is already logged in
         val isLoggedIn = prefs.getBoolean("IS_LOGGED_IN", false)
         if (isLoggedIn) {
-            // User is already logged in, skip LoginActivity
             goToMainActivity()
-            return // Stop the rest of this function from running
+            return
         }
-        // --- END OF FIX (Part 1) ---
 
-        // If not logged in, show the login screen
         setContentView(R.layout.activity_login)
 
         val etUsername = findViewById<EditText>(R.id.et_username)
@@ -53,15 +47,14 @@ class LoginActivity : AppCompatActivity() {
             val savedPassword = prefs.getString("USER_$username", null)
 
             if (username.isNotEmpty() && password.isNotEmpty() && password == savedPassword) {
+                // --- UPDATED PART ---
+                val editor = prefs.edit()
+                editor.putBoolean("IS_LOGGED_IN", true)
+                editor.putString("CURRENT_USER", username) // Saving who is currently logged in
+                editor.apply()
+                // --------------------
 
-                // --- THIS IS THE FIX (Part 2) ---
-                // Save the login state
-                prefs.edit().putBoolean("IS_LOGGED_IN", true).apply()
-                // --- END OF FIX (Part 2) ---
-
-                // On success, go to the main app
                 goToMainActivity()
-
             } else {
                 Toast.makeText(this, getString(R.string.invalid_credentials), Toast.LENGTH_LONG).show()
             }
@@ -78,11 +71,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    // Helper function to go to MainActivity
     private fun goToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        finish() // Close login screen
+        finish()
     }
 
     private fun showRegisterDialog() {
@@ -102,9 +94,8 @@ class LoginActivity : AppCompatActivity() {
                 if (username.isEmpty() || password.isEmpty()) {
                     Toast.makeText(this, getString(R.string.please_fill_all_fields), Toast.LENGTH_LONG).show()
                 } else {
-                    // Save the new user to SharedPreferences
                     with(prefs.edit()) {
-                        putString("USER_$username", password) // Save password keyed by username
+                        putString("USER_$username", password)
                         apply()
                     }
                     Toast.makeText(this, getString(R.string.registration_successful), Toast.LENGTH_LONG).show()
@@ -119,7 +110,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showLanguageDialog() {
-        // Get language names and codes from strings.xml
         val languages = resources.getStringArray(R.array.languages)
         val languageCodes = resources.getStringArray(R.array.language_codes)
 
@@ -128,14 +118,11 @@ class LoginActivity : AppCompatActivity() {
         builder.setItems(languages) { dialog, which ->
             val langCode = languageCodes[which]
             LocaleHelper.saveLocale(this, langCode)
-
-            // Recreate the app to apply the new language
             recreate()
         }
         builder.show()
     }
 
-    // This is required to apply the language
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase))
     }
