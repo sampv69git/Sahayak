@@ -44,9 +44,4 @@ Contributions are welcome! If you have ideas to make this app more senior-friend
 3.  Commit your changes.
 4.  Open a Pull Request.
 
-## 📄 License
 
-This project is open-source and available under the MIT License.
-
----
-*Developed with ❤️ by Samarth PV*
