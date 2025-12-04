@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/nav_pension"
-        android:title="@string/pension"
-        android:icon="@android:drawable/ic_menu_my_calendar" />
+        android:icon="@drawable/ic_pension"
+        android:title="@string/pension" />
+
     <item
         android:id="@+id/nav_insurance"
-        android:title="@string/insurance"
-        android:icon="@android:drawable/ic_menu_save" />
+        android:icon="@drawable/ic_insurance"
+        android:title="@string/insurance" />
+
     <item
         android:id="@+id/nav_emergency"
-        android:title="@string/emergency"
-        android:icon="@android:drawable/ic_menu_call" />
+        android:icon="@drawable/ic_emergency"
+        android:title="@string/emergency_contact" />
+
     <item
         android:id="@+id/nav_talkie"
-        android:title="@string/talkie"
-        android:icon="@android:drawable/ic_media_play" />
+        android:icon="@drawable/ic_talkie"
+        android:title="@string/talkie" />
+
 </menu>

@@ -1,49 +1,75 @@
 package com.example.sahayak
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var prefs: SharedPreferences
+    private lateinit var bottomNavigation: BottomNavigationView
     private val PREFS_NAME = "SeniorCareApp"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Apply language
         LocaleHelper.setLocale(this)
-
         setContentView(R.layout.activity_main)
 
         prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        bottomNavigation = findViewById(R.id.bottom_navigation)
 
+        // 1. Setup Navigation Selection
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_pension -> { showFragment(PensionFragment()); true }
+                R.id.nav_insurance -> { showFragment(InsuranceFragment()); true }
+                R.id.nav_emergency -> { showFragment(EmergencyContactFragment()); true }
+                R.id.nav_talkie -> { showFragment(TalkieFragment()); true }
+                else -> false
+            }
+        }
+
+        // 2. Initial Checks
         if (savedInstanceState == null) {
-            // --- UPDATED PART ---
-            // 1. Get the current user's name
-            val currentUser = prefs.getString("CURRENT_USER", "")
+            val currentUser = prefs.getString("CURRENT_USER", "") ?: ""
 
-            // 2. Check if THIS specific user has completed their profile
+            if (currentUser.isEmpty()) {
+                prefs.edit().putBoolean("IS_LOGGED_IN", false).apply()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+                return
+            }
+
             val isProfileComplete = prefs.getBoolean("PROFILE_COMPLETE_$currentUser", false)
 
             if (isProfileComplete) {
-                // If yes, go straight to the dashboard
+                // Ensure buttons are visible when app starts
+                updateNavigationVisibility()
                 showFragment(WelcomeFragment())
             } else {
-                // If no, force user to create a profile
                 showFragment(CreateProfileFragment())
             }
-            // --------------------
         }
+    }
+
+    // --- CRITICAL FIX: FORCE ALL BUTTONS TO BE VISIBLE ---
+    // Even if other fragments call this, it will now SHOW everything instead of hiding it.
+    fun updateNavigationVisibility() {
+        bottomNavigation.menu.findItem(R.id.nav_pension).isVisible = true
+        bottomNavigation.menu.findItem(R.id.nav_insurance).isVisible = true
+        bottomNavigation.menu.findItem(R.id.nav_emergency).isVisible = true
+        bottomNavigation.menu.findItem(R.id.nav_talkie).isVisible = true
     }
 
     fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null) // Keep back stack behavior if desired, or remove if you want to block going back
+            .addToBackStack(null)
             .commit()
     }
 

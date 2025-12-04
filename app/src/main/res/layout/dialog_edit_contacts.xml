@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="20dp">
 
-    <EditText
-        android:id="@+id/etSonNumber"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/son_phone_number"
-        android:inputType="phone"/>
+        android:text="@string/dialog_set_contacts_title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
 
     <EditText
-        android:id="@+id/etDaughterNumber"
+        android:id="@+id/etContactName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/daughter_phone_number"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"/>
+
+    <EditText
+        android:id="@+id/etContactNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
         android:inputType="phone"
-        android:layout_marginTop="8dp"/>
-
-    <EditText
-        android:id="@+id/etSpouseNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/spouse_phone_number"
-        android:inputType="phone"
-        android:layout_marginTop="8dp"/>
+        android:minHeight="48dp"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>

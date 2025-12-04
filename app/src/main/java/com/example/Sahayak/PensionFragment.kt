@@ -24,19 +24,19 @@ class PensionFragment : Fragment() {
 
         val prefs = activity?.getSharedPreferences("SeniorCareApp", Context.MODE_PRIVATE)
 
-        // --- UPDATED LOGIC ---
         // 1. Get the current user
         val currentUser = prefs?.getString("CURRENT_USER", "") ?: ""
 
-        // 2. Check if THIS specific user has pension
-        val hasPension = prefs?.getBoolean("HAS_PENSION_$currentUser", false) ?: false
+        // --- FIX: CORRECT KEY FORMAT TO MATCH CreateProfileFragment ---
+        // Was: "HAS_PENSION_$currentUser" -> Incorrect
+        // Now: "${currentUser}_HAS_PENSION" -> Correct
+        val hasPension = prefs?.getBoolean("${currentUser}_HAS_PENSION", false) ?: false
 
         if (hasPension) {
-            // 3. Get the amount for THIS specific user
-            val amount = prefs?.getString("PENSION_AMOUNT_$currentUser", "N/A")
+            // --- FIX: CORRECT KEY FORMAT FOR AMOUNT ---
+            val amount = prefs?.getString("${currentUser}_PENSION_AMOUNT", "N/A")
             tvStatus.text = getString(R.string.pension_status_yes, amount)
 
-            // Create dummy history for 2025
             val history = listOf(
                 PensionHistoryItem("January 2025", getString(R.string.status_credited)),
                 PensionHistoryItem("February 2025", getString(R.string.status_credited)),
@@ -48,26 +48,22 @@ class PensionFragment : Fragment() {
                 PensionHistoryItem("August 2025", getString(R.string.status_credited)),
                 PensionHistoryItem("September 2025", getString(R.string.status_credited)),
                 PensionHistoryItem("October 2025", getString(R.string.status_credited)),
-                PensionHistoryItem("November 2025", getString(R.string.status_pending)),
-                PensionHistoryItem("December 2025", getString(R.string.status_upcoming))
+                PensionHistoryItem("November 2025", getString(R.string.status_credited)),
+                PensionHistoryItem("December 2025", getString(R.string.status_pending))
             )
 
             rvHistory.layoutManager = LinearLayoutManager(activity)
             rvHistory.adapter = PensionHistoryAdapter(history)
 
-            // Make sure list is visible
             tvHistoryTitle.visibility = View.VISIBLE
             rvHistory.visibility = View.VISIBLE
 
         } else {
             // No pension for this user
             tvStatus.text = getString(R.string.pension_status_no)
-
-            // Hide the list and title
             tvHistoryTitle.visibility = View.GONE
             rvHistory.visibility = View.GONE
         }
-        // ---------------------
 
         return view
     }

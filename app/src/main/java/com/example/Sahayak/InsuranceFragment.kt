@@ -7,57 +7,40 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.sahayak.R
 
 class InsuranceFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_insurance, container, false)
-        val tvStatus: TextView = view.findViewById(R.id.tvInsuranceStatus)
-        val tvCompany: TextView = view.findViewById(R.id.tvInsuranceCompany)
-        val tvPlan: TextView = view.findViewById(R.id.tvInsurancePlan)
-        val tvPremium: TextView = view.findViewById(R.id.tvInsurancePremium)
 
         val prefs = activity?.getSharedPreferences("SeniorCareApp", Context.MODE_PRIVATE)
-
-        // --- UPDATED LOGIC ---
-        // 1. Get the current user
         val currentUser = prefs?.getString("CURRENT_USER", "") ?: ""
 
-        // 2. Check if THIS specific user has insurance
-        val hasInsurance = prefs?.getBoolean("HAS_INSURANCE_$currentUser", false) ?: false
+        val hasInsurance = prefs?.getBoolean("${currentUser}_HAS_INSURANCE", false) ?: false
+
+        // IDs must match your XML
+        val tvStatus = view.findViewById<TextView>(R.id.tvInsuranceStatus) // Make sure this ID exists in XML
+        val tvCompany = view.findViewById<TextView>(R.id.tvInsuranceCompany)
+        val tvPlan = view.findViewById<TextView>(R.id.tvInsurancePlan)
+        val tvPremium = view.findViewById<TextView>(R.id.tvInsurancePremium)
 
         if (hasInsurance) {
-            tvStatus.visibility = View.GONE // No status text needed if we have data
+            val company = prefs?.getString("${currentUser}_INSURANCE_COMPANY", "")
+            val plan = prefs?.getString("${currentUser}_INSURANCE_PLAN", "")
+            val premium = prefs?.getString("${currentUser}_INSURANCE_PREMIUM", "")
 
-            // 3. Fetch specific details for THIS user
-            val company = prefs?.getString("INSURANCE_COMPANY_$currentUser", "N/A")
-            val plan = prefs?.getString("INSURANCE_PLAN_$currentUser", "N/A")
-            val premium = prefs?.getString("INSURANCE_PREMIUM_$currentUser", "N/A")
-
-            tvCompany.text = "${getString(R.string.insurance_company)} $company"
-            tvPlan.text = "${getString(R.string.insurance_plan)} $plan"
-            tvPremium.text = "${getString(R.string.insurance_premium)} $premium"
-
-            // Ensure details are visible
-            tvCompany.visibility = View.VISIBLE
-            tvPlan.visibility = View.VISIBLE
-            tvPremium.visibility = View.VISIBLE
-
+            // FIX: Use getString with arguments to support multiple languages
+            tvStatus.text = getString(R.string.status_active)
+            tvCompany.text = getString(R.string.ins_company_format, company)
+            tvPlan.text = getString(R.string.ins_plan_format, plan)
+            tvPremium.text = getString(R.string.ins_premium_format, premium)
         } else {
-            // No insurance for this user
-            tvStatus.text = getString(R.string.insurance_status_no)
-            tvStatus.visibility = View.VISIBLE
-
-            // Hide the details
-            tvCompany.visibility = View.GONE
-            tvPlan.visibility = View.GONE
-            tvPremium.visibility = View.GONE
+            // If no insurance, show "Not Insured" and "N/A"
+            tvStatus.text = getString(R.string.status_inactive)
+            tvCompany.text = getString(R.string.ins_company_format, getString(R.string.status_na))
+            tvPlan.text = getString(R.string.ins_plan_format, getString(R.string.status_na))
+            tvPremium.text = getString(R.string.ins_premium_format, getString(R.string.status_na))
         }
-        // ---------------------
 
         return view
     }
