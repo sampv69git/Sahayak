@@ -42,7 +42,7 @@
     </string-array>
 
     <string name="username">వాడుకరిపేరు</string>
-    <string name="password">పాస్వర్డ్</string>
+    <string name="password">പാస్వర్డ్</string>
     <string name="login">లాగిన్</string>
     <string name="register">నమోదు చేసుకోండి</string>
     <string name="register_new_user">కొత్త వినియోగదారుని నమోదు చేయండి</string>
@@ -83,27 +83,24 @@
     <string name="logout_confirm_title">లాగ్ అవుట్</string>
     <string name="logout_confirm_message">మీరు ఖచ్చితంగా లాగ్ అవుట్ చేయాలనుకుంటున్నారా?</string>
 
-    <string name="pension_details">పెన్షన్ వివరాలు</string>
-    <string name="pension_status_yes">పెన్షన్ అందుతోంది: ₹%1$s</string>
-    <string name="pension_status_no">పెన్షన్ రికార్డు లేదు</string>
-    <string name="pension_history_2025">2025 పెన్షన్ చరిత్ర</string>
+    <string name="pension_title">పెన్షన్ వివరాలు</string>
+    <string name="monthly_pension_text">నెలవారీ పెన్షన్: ₹%1$s</string>
+    <string name="no_pension_record">పెన్షన్ రికార్డు కనుగొనబడలేదు</string>
+    <string name="select_year">సంవత్సరాన్ని ఎంచుకోండి:</string>
+    <string name="status_credited_date">%1$s న జమ చేయబడింది</string>
     <string name="status_prefix">స్థితి:</string>
     <string name="status_upcoming">రాబోయే</string>
     <string name="status_pending">పెండింగ్‌లో ఉంది</string>
     <string name="status_credited">క్రెడిట్ చేయబడింది</string>
 
-    <string name="insurance_details">భీమా వివరాలు</string>
-    <string name="insurance_status_label">బీమా స్థితి</string>
-    <string name="insurance_status_no">మీకు చురుకైన బీమా ప్లాన్ లేదని మీరు సూచించారు.</string>
+    <string name="insurance_title">భీమా వివరాలు</string>
+    <string name="insurance_status_label">బీమా స్థితి:</string>
+    <string name="no_insurance_record">యాక్టివ్ బీమా రికార్డు ఏదీ కనుగొనబడలేదు</string>
     <string name="status_active">యాక్టివ్</string>
     <string name="status_inactive">బీమా లేదు</string>
-    <string name="status_na">N/A</string>
-    <string name="ins_company_format">కంపెనీ: %1$s</string>
-    <string name="ins_plan_format">ప్లాన్: %1$s</string>
-    <string name="ins_premium_format">ప్రీమియం: %1$s</string>
-    <string name="insurance_company">కంపెనీ:</string>
-    <string name="insurance_plan">ప్లాన్:</string>
-    <string name="insurance_premium">ప్రీమియం:</string>
+    <string name="company_label">కంపెనీ:</string>
+    <string name="plan_label">ప్లాన్:</string>
+    <string name="premium_label">ప్రీమియం:</string>
     <string name="loading">లోడ్ అవుతోంది...</string>
 
     <string name="emergency_contacts">అత్యవసర పరిచయాలు</string>
@@ -145,5 +142,4 @@
     <string name="game_over_draw">ఆట ముగిసింది! ఇది డ్రా!</string>
     <string name="game_restart">ఆటను పునఃప్రారంభించండి</string>
     <string name="game_status_turn">ఆటగాడు %1$s వంతు</string>
-
 </resources>

@@ -13,6 +13,7 @@
     <string name="nav_emergency">SOS</string>
     <string name="nav_talkie">Talkie</string>
     <string name="nav_funzone">Funzone</string>
+    <string name="home">Home</string>
 
     <string name="pension">Pension</string>
     <string name="insurance">Insurance</string>
@@ -22,7 +23,8 @@
     <string name="funzone">Funzone</string>
     <string name="emergency">Emergency Contact</string>
     <string name="emergency_short">Emergency</string>
-    <string name="emergency_contact">Emergency Contact</string> <string name="profile">Profile</string>
+    <string name="emergency_contact">Emergency Contact</string>
+    <string name="profile">Profile</string>
 
     <string name="choose_language">Choose Language:</string>
     <string-array name="languages">
@@ -82,28 +84,26 @@
     <string name="logout_confirm_title">Log Out</string>
     <string name="logout_confirm_message">Are you sure you want to log out?</string>
 
-    <string name="pension_details">Pension Details</string>
-    <string name="pension_status_yes">You are receiving a monthly pension of: ₹%1$s</string>
-    <string name="pension_status_no">No Pension Record</string>
-    <string name="pension_history_2025">2025 Pension History</string>
+    <string name="pension_title">Pension Details</string>
+    <string name="monthly_pension_text">Monthly Pension: ₹%1$s</string>
+    <string name="no_pension_record">No Pension Record Found</string>
+    <string name="select_year">Select Year:</string>
+    <string name="status_credited_date">Credited on %1$s</string>
     <string name="status_prefix">Status:</string>
     <string name="status_upcoming">Upcoming</string>
     <string name="status_pending">Pending</string>
     <string name="status_credited">Credited</string>
 
-    <string name="insurance_details">Insurance Details</string>
-    <string name="insurance_status_label">Insurance Status</string>
-    <string name="insurance_status_no">You have indicated that you do not have an active insurance plan.</string>
+    <string name="insurance_title">Insurance Details</string>
+    <string name="insurance_status_label">Insurance Status:</string>
+    <string name="no_insurance_record">No Active Insurance Record Found</string>
     <string name="status_active">Active</string>
-    <string name="status_inactive">Not Insured</string>
-    <string name="status_na">N/A</string>
-    <string name="ins_company_format">Company: %1$s</string>
-    <string name="ins_plan_format">Plan: %1$s</string>
-    <string name="ins_premium_format">Premium: %1$s</string>
-    <string name="insurance_company">Company:</string>
-    <string name="insurance_plan">Plan:</string>
-    <string name="insurance_premium">Premium:</string>
+    <string name="status_inactive">No Insurance</string>
+    <string name="company_label">Company:</string>
+    <string name="plan_label">Plan:</string>
+    <string name="premium_label">Premium:</string>
     <string name="loading">Loading...</string>
+    <string name="status_na">N/A</string>
 
     <string name="emergency_contacts">Emergency Contacts</string>
     <string name="add_new_contact">Add New Contact</string>
@@ -144,5 +144,4 @@
     <string name="game_over_draw">Game Over! It is a draw.</string>
     <string name="game_restart">Restart Game</string>
     <string name="game_status_turn">Player %1$s\'s turn</string>
-
 </resources>

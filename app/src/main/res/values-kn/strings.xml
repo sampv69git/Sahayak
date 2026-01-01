@@ -83,27 +83,24 @@
     <string name="logout_confirm_title">ಲಾಗ್ ಔಟ್</string>
     <string name="logout_confirm_message">ನೀವು ಖಚಿತವಾಗಿ ಲಾಗ್ ಔಟ್ ಮಾಡಲು ಬಯಸುವಿರಾ?</string>
 
-    <string name="pension_details">ಪಿಂಚಣಿ ವಿವರಗಳು</string>
-    <string name="pension_status_yes">ಪಿಂಚಣಿ ಸಕ್ರಿಯವಾಗಿದೆ: ₹%1$s</string>
-    <string name="pension_status_no">ಯಾವುದೇ ಪಿಂಚಣಿ ದಾಖಲೆ ಇಲ್ಲ</string>
-    <string name="pension_history_2025">2025 ಪಿಂಚಣಿ ಇತಿಹಾಸ</string>
+    <string name="pension_title">ಪಿಂಚಣಿ ವಿವರಗಳು</string>
+    <string name="monthly_pension_text">ಮಾಸಿಕ ಪಿಂಚಣಿ: ₹%1$s</string>
+    <string name="no_pension_record">ಯಾವುದೇ ಪಿಂಚಣಿ ದಾಖಲೆ ಕಂಡುಬಂದಿಲ್ಲ</string>
+    <string name="select_year">ವರ್ಷವನ್ನು ಆಯ್ಕೆಮಾಡಿ:</string>
+    <string name="status_credited_date">%1$s ರಂದು ಜಮೆಯಾಗಿದೆ</string>
     <string name="status_prefix">ಸ್ಥಿತಿ:</string>
     <string name="status_upcoming">ಮುಂಬರುವ</string>
     <string name="status_pending">ಬಾಕಿಯಿದೆ</string>
     <string name="status_credited">ಕ್ರೆಡಿಟ್ ಆಗಿದೆ</string>
 
-    <string name="insurance_details">ವಿಮಾ ವಿವರಗಳು</string>
-    <string name="insurance_status_label">ವಿಮಾ ಸ್ಥಿತಿ</string>
-    <string name="insurance_status_no">ನೀವು ಸಕ್ರಿಯ ವಿಮಾ ಯೋಜನೆಯನ್ನು ಹೊಂದಿಲ್ಲ ಎಂದು ಸೂಚಿಸಿದ್ದೀರಿ.</string>
-    <string name="status_active">ಸಕ್ರಿಯ</string>
+    <string name="insurance_title">ವಿಮಾ ವಿವರಗಳು</string>
+    <string name="insurance_status_label">ವಿಮಾ ಸ್ಥಿತಿ:</string>
+    <string name="no_insurance_record">ಯಾವುದೇ ಸಕ್ರಿಯ ವಿಮಾ ದಾಖಲೆ ಕಂಡುಬಂದಿಲ್ಲ</string>
+    <string name="status_active">ಸಕ್ರಿಯವಾಗಿದೆ</string>
     <string name="status_inactive">ವಿಮೆ ಇಲ್ಲ</string>
-    <string name="status_na">N/A</string>
-    <string name="ins_company_format">ಕಂಪನಿ: %1$s</string>
-    <string name="ins_plan_format">ಯೋಜನೆ: %1$s</string>
-    <string name="ins_premium_format">ಪ್ರೀಮಿಯಂ: %1$s</string>
-    <string name="insurance_company">ಕಂಪನಿ:</string>
-    <string name="insurance_plan">ಯೋಜನೆ:</string>
-    <string name="insurance_premium">ಪ್ರೀಮಿಯಂ:</string>
+    <string name="company_label">ಕಂಪನಿ:</string>
+    <string name="plan_label">ಯೋಜನೆ:</string>
+    <string name="premium_label">ಪ್ರೀಮಿಯಂ:</string>
     <string name="loading">ಲೋಡ್ ಆಗುತ್ತಿದೆ...</string>
 
     <string name="emergency_contacts">ತುರ್ತು ಸಂಪರ್ಕಗಳು</string>
@@ -145,5 +142,4 @@
     <string name="game_over_draw">ಆಟ ಮುಗಿದಿದೆ! ಇದು ಡ್ರಾ!</string>
     <string name="game_restart">ಆಟವನ್ನು ಪುನರಾರಂಭಿಸಿ</string>
     <string name="game_status_turn">ಆಟಗಾರ %1$s ಸರದಿ</string>
-
 </resources>

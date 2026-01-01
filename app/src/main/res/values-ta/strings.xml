@@ -83,27 +83,24 @@
     <string name="logout_confirm_title">வெளியேறு</string>
     <string name="logout_confirm_message">நீங்கள் நிச்சயமாக வெளியேற விரும்புகிறீர்களா?</string>
 
-    <string name="pension_details">ஓய்வூதிய விவரங்கள்</string>
-    <string name="pension_status_yes">ஓய்வூதியம் செயலில் உள்ளது: ₹%1$s</string>
-    <string name="pension_status_no">ஓய்வூதிய பதிவு இல்லை</string>
-    <string name="pension_history_2025">2025 ஓய்வூதிய வரலாறு</string>
+    <string name="pension_title">ஓய்வூதிய விவரங்கள்</string>
+    <string name="monthly_pension_text">மாத ஓய்வூதியம்: ₹%1$s</string>
+    <string name="no_pension_record">ஓய்வூதிய பதிவு எதுவும் இல்லை</string>
+    <string name="select_year">வருடத்தைத் தேர்ந்தெடுக்கவும்:</string>
+    <string name="status_credited_date">%1$s அன்று வரவு வைக்கப்பட்டது</string>
     <string name="status_prefix">நிலை:</string>
     <string name="status_upcoming">வரவிருக்கும்</string>
     <string name="status_pending">நிலுவையில்</string>
     <string name="status_credited">வரவு வைக்கப்பட்டது</string>
 
-    <string name="insurance_details">காப்பீட்டு விவரங்கள்</string>
-    <string name="insurance_status_label">காப்பீட்டு நிலை</string>
-    <string name="insurance_status_no">உங்களிடம் செயலில் காப்பீட்டுத் திட்டம் இல்லை என்று குறிப்பிட்டுள்ளீர்கள்.</string>
+    <string name="insurance_title">காப்பீட்டு விவரங்கள்</string>
+    <string name="insurance_status_label">காப்பீட்டு நிலை:</string>
+    <string name="no_insurance_record">செயலில் உள்ள காப்பீட்டுப் பதிவு இல்லை</string>
     <string name="status_active">செயலில் உள்ளது</string>
     <string name="status_inactive">காப்பீடு இல்லை</string>
-    <string name="status_na">N/A</string>
-    <string name="ins_company_format">நிறுவனம்: %1$s</string>
-    <string name="ins_plan_format">திட்டம்: %1$s</string>
-    <string name="ins_premium_format">பிரீமியம்: %1$s</string>
-    <string name="insurance_company">நிறுவனம்:</string>
-    <string name="insurance_plan">திட்டம்:</string>
-    <string name="insurance_premium">பிரீமியம்:</string>
+    <string name="company_label">நிறுவனம்:</string>
+    <string name="plan_label">திட்டம்:</string>
+    <string name="premium_label">பிரிமியம்:</string>
     <string name="loading">ஏற்றுகிறது...</string>
 
     <string name="emergency_contacts">அவசர தொடர்புகள்</string>
@@ -145,5 +142,4 @@
     <string name="game_over_draw">ஆட்டம் முடிந்தது! இது டிரா!</string>
     <string name="game_restart">விளையாட்டை மீண்டும் தொடங்கு</string>
     <string name="game_status_turn">வீரர் %1$s முறை</string>
-
 </resources>

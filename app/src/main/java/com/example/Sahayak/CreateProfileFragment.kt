@@ -6,159 +6,196 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 class CreateProfileFragment : Fragment() {
 
-    private val PREFS_NAME = "SeniorCareApp"
-    private val KEY_FIRST_NAME = "FIRST_NAME"
-    private val KEY_LAST_NAME = "LAST_NAME"
-    private val KEY_AGE = "AGE"
-    private val KEY_HOBBY = "HOBBY"
-    private val KEY_SEX = "SEX" // Added Key
-    private val KEY_MARITAL_STATUS = "MARITAL_STATUS" // Added Key
-    private val KEY_RECEIVES_PENSION = "HAS_PENSION"
-    private val KEY_PENSION_AMOUNT = "PENSION_AMOUNT"
-    private val KEY_HAS_INSURANCE = "HAS_INSURANCE"
-    private val KEY_INSURANCE_COMPANY = "INSURANCE_COMPANY"
-    private val KEY_INSURANCE_PLAN = "INSURANCE_PLAN"
-    private val KEY_INSURANCE_PREMIUM = "INSURANCE_PREMIUM"
-
     private lateinit var prefs: SharedPreferences
-    private lateinit var etFirstName: EditText
-    private lateinit var etLastName: EditText
-    private lateinit var etAge: EditText
-    private lateinit var etHobby: EditText
-    private lateinit var rgSex: RadioGroup
-    private lateinit var rgMaritalStatus: RadioGroup
-    private lateinit var rgPension: RadioGroup
-    private lateinit var layoutPension: LinearLayout
-    private lateinit var etPensionAmount: EditText
-    private lateinit var rgInsurance: RadioGroup
-    private lateinit var layoutInsurance: LinearLayout
-    private lateinit var etInsuranceCompany: EditText
-    private lateinit var etInsurancePlan: EditText
-    private lateinit var etInsurancePremium: EditText
-    private lateinit var btnSaveProfile: Button
+    private val PREFS_NAME = "SeniorCareApp"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_create_profile, container, false)
-        prefs = activity?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
+        val rootView = inflater.inflate(R.layout.fragment_create_profile, container, false)
 
-        etFirstName = view.findViewById(R.id.etFirstName)
-        etLastName = view.findViewById(R.id.etLastName)
-        etAge = view.findViewById(R.id.etAge)
-        etHobby = view.findViewById(R.id.etHobby)
-        rgSex = view.findViewById(R.id.rgSex)
-        rgMaritalStatus = view.findViewById(R.id.rgMaritalStatus)
-        rgPension = view.findViewById(R.id.rgPension)
-        layoutPension = view.findViewById(R.id.layoutPensionDetails)
-        etPensionAmount = view.findViewById(R.id.etPensionAmount)
-        rgInsurance = view.findViewById(R.id.rgInsurance)
-        layoutInsurance = view.findViewById(R.id.layoutInsuranceDetails)
-        etInsuranceCompany = view.findViewById(R.id.etInsuranceCompany)
-        etInsurancePlan = view.findViewById(R.id.etInsurancePlan)
-        etInsurancePremium = view.findViewById(R.id.etInsurancePremium)
-        btnSaveProfile = view.findViewById(R.id.btnSaveProfile)
+        prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-        rgPension.setOnCheckedChangeListener { _, id -> layoutPension.visibility = if (id == R.id.rbPensionYes) View.VISIBLE else View.GONE }
-        rgInsurance.setOnCheckedChangeListener { _, id -> layoutInsurance.visibility = if (id == R.id.rbInsuranceYes) View.VISIBLE else View.GONE }
+        // 1. Initialize Views (MATCHING YOUR XML IDs)
+        val etFirstName = rootView.findViewById<EditText>(R.id.etFirstName)
+        val etLastName = rootView.findViewById<EditText>(R.id.etLastName)
+        val etAge = rootView.findViewById<EditText>(R.id.etAge)
+        val etHobby = rootView.findViewById<EditText>(R.id.etHobby)
 
-        loadProfileData()
+        // Pension Container & Amount
+        val layoutPensionDetails = rootView.findViewById<LinearLayout>(R.id.layoutPensionDetails)
+        val etPensionAmount = rootView.findViewById<EditText>(R.id.etPensionAmount)
 
-        btnSaveProfile.setOnClickListener { validateAndSave(view) } // Pass view to get radio button text
-        return view
-    }
+        // Insurance Container & Details (THE MISSING PART RESTORED)
+        val layoutInsuranceDetails = rootView.findViewById<LinearLayout>(R.id.layoutInsuranceDetails)
+        val etInsuranceCompany = rootView.findViewById<EditText>(R.id.etInsuranceCompany)
+        val etInsurancePlan = rootView.findViewById<EditText>(R.id.etInsurancePlan)
+        val etInsurancePremium = rootView.findViewById<EditText>(R.id.etInsurancePremium)
 
-    private fun getUserKey(key: String): String {
+        // Radio Groups
+        val rgSex = rootView.findViewById<RadioGroup>(R.id.rgSex)
+        val rbMale = rootView.findViewById<RadioButton>(R.id.rbMale)
+        val rbFemale = rootView.findViewById<RadioButton>(R.id.rbFemale)
+
+        val rgMarital = rootView.findViewById<RadioGroup>(R.id.rgMaritalStatus)
+        val rbSingle = rootView.findViewById<RadioButton>(R.id.rbSingle)
+        val rbMarried = rootView.findViewById<RadioButton>(R.id.rbMarried)
+        val rbWidowed = rootView.findViewById<RadioButton>(R.id.rbWidowed)
+
+        val rgPension = rootView.findViewById<RadioGroup>(R.id.rgPension)
+        val rbPensionYes = rootView.findViewById<RadioButton>(R.id.rbPensionYes)
+        val rbPensionNo = rootView.findViewById<RadioButton>(R.id.rbPensionNo)
+
+        val rgInsurance = rootView.findViewById<RadioGroup>(R.id.rgInsurance)
+        val rbInsuranceYes = rootView.findViewById<RadioButton>(R.id.rbInsuranceYes)
+        val rbInsuranceNo = rootView.findViewById<RadioButton>(R.id.rbInsuranceNo)
+
+        val btnSave = rootView.findViewById<Button>(R.id.btnSaveProfile)
+
+        // 2. Load Existing Data (PRE-FILL LOGIC)
         val currentUser = prefs.getString("CURRENT_USER", "") ?: ""
-        return "${currentUser}_$key"
-    }
 
-    private fun loadProfileData() {
-        etFirstName.setText(prefs.getString(getUserKey(KEY_FIRST_NAME), ""))
-        etLastName.setText(prefs.getString(getUserKey(KEY_LAST_NAME), ""))
-        etAge.setText(prefs.getString(getUserKey(KEY_AGE), ""))
-        etHobby.setText(prefs.getString(getUserKey(KEY_HOBBY), ""))
+        // Load Basic Text Fields
+        etFirstName.setText(prefs.getString("${currentUser}_FIRST_NAME", ""))
+        etLastName.setText(prefs.getString("${currentUser}_LAST_NAME", ""))
+        etAge.setText(prefs.getString("${currentUser}_AGE", ""))
+        etHobby.setText(prefs.getString("${currentUser}_HOBBY", ""))
+        etPensionAmount.setText(prefs.getString("${currentUser}_PENSION_AMOUNT", ""))
 
-        // Note: Loading logic for RadioGroups (Sex/Marital) can be added here if needed in the future
+        // Load Insurance Text Fields
+        etInsuranceCompany.setText(prefs.getString("${currentUser}_INS_COMPANY", ""))
+        etInsurancePlan.setText(prefs.getString("${currentUser}_INS_PLAN", ""))
+        etInsurancePremium.setText(prefs.getString("${currentUser}_INS_PREMIUM", ""))
 
-        val hasPension = prefs.getBoolean(getUserKey(KEY_RECEIVES_PENSION), false)
+        // --- PRE-FILL SEX ---
+        val savedSex = prefs.getString("${currentUser}_SEX", "")
+        if (savedSex == "Male") rbMale.isChecked = true
+        else if (savedSex == "Female") rbFemale.isChecked = true
+
+        // --- PRE-FILL MARITAL STATUS ---
+        val savedMarital = prefs.getString("${currentUser}_MARITAL_STATUS", "")
+        when (savedMarital) {
+            "Single" -> rbSingle.isChecked = true
+            "Married" -> rbMarried.isChecked = true
+            "Widowed" -> rbWidowed.isChecked = true
+        }
+
+        // --- PRE-FILL PENSION ---
+        val hasPension = prefs.getBoolean("${currentUser}_HAS_PENSION", false)
         if (hasPension) {
-            rgPension.check(R.id.rbPensionYes)
-            etPensionAmount.setText(prefs.getString(getUserKey(KEY_PENSION_AMOUNT), ""))
+            rbPensionYes.isChecked = true
+            layoutPensionDetails.visibility = View.VISIBLE
         } else {
-            rgPension.check(R.id.rbPensionNo)
+            rbPensionNo.isChecked = true
+            layoutPensionDetails.visibility = View.GONE
         }
 
-        val hasInsurance = prefs.getBoolean(getUserKey(KEY_HAS_INSURANCE), false)
+        // --- PRE-FILL INSURANCE ---
+        val hasInsurance = prefs.getBoolean("${currentUser}_HAS_INSURANCE", false)
         if (hasInsurance) {
-            rgInsurance.check(R.id.rbInsuranceYes)
-            etInsuranceCompany.setText(prefs.getString(getUserKey(KEY_INSURANCE_COMPANY), ""))
-            etInsurancePlan.setText(prefs.getString(getUserKey(KEY_INSURANCE_PLAN), ""))
-            etInsurancePremium.setText(prefs.getString(getUserKey(KEY_INSURANCE_PREMIUM), ""))
+            rbInsuranceYes.isChecked = true
+            layoutInsuranceDetails.visibility = View.VISIBLE
         } else {
-            rgInsurance.check(R.id.rbInsuranceNo)
+            rbInsuranceNo.isChecked = true
+            layoutInsuranceDetails.visibility = View.GONE
         }
-    }
 
-    private fun validateAndSave(view: View) {
-        val fName = etFirstName.text.toString().trim()
-        val lName = etLastName.text.toString().trim()
-        val age = etAge.text.toString().trim()
+        // 3. Listeners (Toggle Visibility)
 
-        // Check which radio buttons are selected (-1 means nothing selected)
-        val selectedSexId = rgSex.checkedRadioButtonId
-        val selectedMaritalId = rgMaritalStatus.checkedRadioButtonId
-
-        // --- UPDATED VALIDATION ---
-        // Now checks if Sex OR Marital Status is NOT selected (equals -1)
-        if (fName.isEmpty() || lName.isEmpty() || age.isEmpty() || selectedSexId == -1 || selectedMaritalId == -1) {
-            Toast.makeText(activity, getString(R.string.please_fill_all_fields), Toast.LENGTH_SHORT).show()
-            return
-        }
-        // --------------------------
-
-        val currentUser = prefs.getString("CURRENT_USER", "") ?: ""
-
-        with (prefs.edit()) {
-            putString(getUserKey(KEY_FIRST_NAME), fName)
-            putString(getUserKey(KEY_LAST_NAME), lName)
-            putString(getUserKey(KEY_AGE), age)
-            putString(getUserKey(KEY_HOBBY), etHobby.text.toString())
-
-            // Save Sex
-            val sexButton = view.findViewById<RadioButton>(selectedSexId)
-            putString(getUserKey(KEY_SEX), sexButton.text.toString())
-
-            // Save Marital Status
-            val maritalButton = view.findViewById<RadioButton>(selectedMaritalId)
-            putString(getUserKey(KEY_MARITAL_STATUS), maritalButton.text.toString())
-
-            val hasPension = (rgPension.checkedRadioButtonId == R.id.rbPensionYes)
-            putBoolean(getUserKey(KEY_RECEIVES_PENSION), hasPension)
-            if (hasPension) putString(getUserKey(KEY_PENSION_AMOUNT), etPensionAmount.text.toString())
-            else putString(getUserKey(KEY_PENSION_AMOUNT), "")
-
-            val hasInsurance = (rgInsurance.checkedRadioButtonId == R.id.rbInsuranceYes)
-            putBoolean(getUserKey(KEY_HAS_INSURANCE), hasInsurance)
-            if (hasInsurance) {
-                putString(getUserKey(KEY_INSURANCE_COMPANY), etInsuranceCompany.text.toString())
-                putString(getUserKey(KEY_INSURANCE_PLAN), etInsurancePlan.text.toString())
-                putString(getUserKey(KEY_INSURANCE_PREMIUM), etInsurancePremium.text.toString())
+        // Pension Listener
+        rgPension.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId == R.id.rbPensionYes) {
+                layoutPensionDetails.visibility = View.VISIBLE
             } else {
-                putString(getUserKey(KEY_INSURANCE_COMPANY), "")
-                putString(getUserKey(KEY_INSURANCE_PLAN), "")
-                putString(getUserKey(KEY_INSURANCE_PREMIUM), "")
+                layoutPensionDetails.visibility = View.GONE
             }
-
-            putBoolean("PROFILE_COMPLETE_$currentUser", true)
-            commit()
         }
 
-        Toast.makeText(activity, getString(R.string.profile_toast_saved), Toast.LENGTH_SHORT).show()
-        (activity as MainActivity).updateNavigationVisibility()
-        (activity as MainActivity).showFragment(WelcomeFragment())
+        // Insurance Listener (FIXED)
+        rgInsurance.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId == R.id.rbInsuranceYes) {
+                layoutInsuranceDetails.visibility = View.VISIBLE
+            } else {
+                layoutInsuranceDetails.visibility = View.GONE
+            }
+        }
+
+        // 4. Save Button Logic
+        btnSave.setOnClickListener {
+            val firstName = etFirstName.text.toString()
+            val lastName = etLastName.text.toString()
+            val age = etAge.text.toString()
+            val hobby = etHobby.text.toString()
+            val pensionAmt = etPensionAmount.text.toString()
+
+            // Insurance Data
+            val insCompany = etInsuranceCompany.text.toString()
+            val insPlan = etInsurancePlan.text.toString()
+            val insPremium = etInsurancePremium.text.toString()
+
+            // Get selected radio text
+            var sex = ""
+            if (rbMale.isChecked) sex = "Male"
+            else if (rbFemale.isChecked) sex = "Female"
+
+            var maritalStatus = ""
+            if (rbSingle.isChecked) maritalStatus = "Single"
+            else if (rbMarried.isChecked) maritalStatus = "Married"
+            else if (rbWidowed.isChecked) maritalStatus = "Widowed"
+
+            val hasPensionSelected = rbPensionYes.isChecked
+            val hasInsuranceSelected = rbInsuranceYes.isChecked
+
+            if (firstName.isEmpty() || age.isEmpty()) {
+                Toast.makeText(context, "Please fill required fields", Toast.LENGTH_SHORT).show()
+            } else {
+                val editor = prefs.edit()
+                editor.putString("${currentUser}_FIRST_NAME", firstName)
+                editor.putString("${currentUser}_LAST_NAME", lastName)
+                editor.putString("${currentUser}_AGE", age)
+                editor.putString("${currentUser}_HOBBY", hobby)
+                editor.putString("${currentUser}_SEX", sex)
+                editor.putString("${currentUser}_MARITAL_STATUS", maritalStatus)
+
+                // Save Pension
+                editor.putBoolean("${currentUser}_HAS_PENSION", hasPensionSelected)
+                editor.putString("${currentUser}_PENSION_AMOUNT", if (hasPensionSelected) pensionAmt else "0")
+
+                // Save Insurance
+                editor.putBoolean("${currentUser}_HAS_INSURANCE", hasInsuranceSelected)
+                if (hasInsuranceSelected) {
+                    editor.putString("${currentUser}_INS_COMPANY", insCompany)
+                    editor.putString("${currentUser}_INS_PLAN", insPlan)
+                    editor.putString("${currentUser}_INS_PREMIUM", insPremium)
+                } else {
+                    // Clear if they selected No
+                    editor.putString("${currentUser}_INS_COMPANY", "")
+                    editor.putString("${currentUser}_INS_PLAN", "")
+                    editor.putString("${currentUser}_INS_PREMIUM", "0")
+                }
+
+                editor.putBoolean("PROFILE_COMPLETE_$currentUser", true)
+                editor.apply()
+
+                Toast.makeText(context, "Profile Saved!", Toast.LENGTH_SHORT).show()
+
+                // Navigate to Home
+                if (activity is MainActivity) {
+                    (activity as MainActivity).updateNavigationVisibility()
+                    (activity as MainActivity).showFragment(WelcomeFragment())
+                    (activity as MainActivity).switchToTab(R.id.nav_home)
+                }
+            }
+        }
+
+        return rootView
     }
 }

@@ -83,27 +83,24 @@
     <string name="logout_confirm_title">ലോഗ് ഔട്ട്</string>
     <string name="logout_confirm_message">നിങ്ങൾക്ക് ലോഗ് ഔട്ട് ചെയ്യണമെന്ന് ഉറപ്പാണോ?</string>
 
-    <string name="pension_details">പെൻഷൻ വിശദാംശങ്ങൾ</string>
-    <string name="pension_status_yes">പെൻഷൻ ലഭിക്കുന്നു: ₹%1$s</string>
-    <string name="pension_status_no">പെൻഷൻ റെക്കോർഡ് ഇല്ല</string>
-    <string name="pension_history_2025">2025 പെൻഷൻ ചരിത്രം</string>
+    <string name="pension_title">പെൻഷൻ വിശദാംശങ്ങൾ</string>
+    <string name="monthly_pension_text">പ്രതിമാസ പെൻഷൻ: ₹%1$s</string>
+    <string name="no_pension_record">പെൻഷൻ രേഖകളൊന്നും കണ്ടെത്തിയില്ല</string>
+    <string name="select_year">വർഷം തിരഞ്ഞെടുക്കുക:</string>
+    <string name="status_credited_date">%1$s-ൽ ക്രെഡിറ്റ് ചെയ്തു</string>
     <string name="status_prefix">സ്ഥിതി:</string>
     <string name="status_upcoming">വരാനിരിക്കുന്ന</string>
     <string name="status_pending">തീർച്ചപ്പെടുത്തിയിട്ടില്ല</string>
     <string name="status_credited">ക്രെഡിറ്റ് ചെയ്തു</string>
 
-    <string name="insurance_details">ഇൻഷുറൻസ് വിശദാംശങ്ങൾ</string>
-    <string name="insurance_status_label">ഇൻഷുറൻസ് നില</string>
-    <string name="insurance_status_no">നിങ്ങൾക്ക് സജീവമായ ഇൻഷുറൻസ് പ്ലാൻ ഇല്ലെന്ന് നിങ്ങൾ സൂചിപ്പിച്ചു.</string>
-    <string name="status_active">സജീവമാണ്</string>
+    <string name="insurance_title">ഇൻഷുറൻസ് വിശദാംശങ്ങൾ</string>
+    <string name="insurance_status_label">ഇൻഷുറൻസ് നില:</string>
+    <string name="no_insurance_record">സജീവമായ ഇൻഷുറൻസ് റെക്കോർഡുകളൊന്നും കണ്ടെത്തിയില്ല</string>
+    <string name="status_active">സജീവം</string>
     <string name="status_inactive">ഇൻഷുറൻസ് ഇല്ല</string>
-    <string name="status_na">N/A</string>
-    <string name="ins_company_format">കമ്പനി: %1$s</string>
-    <string name="ins_plan_format">പദ്ധതി: %1$s</string>
-    <string name="ins_premium_format">പ്രീമിയം: %1$s</string>
-    <string name="insurance_company">കമ്പനി:</string>
-    <string name="insurance_plan">പ്ലാൻ:</string>
-    <string name="insurance_premium">പ്രീമിയം:</string>
+    <string name="company_label">കമ്പനി:</string>
+    <string name="plan_label">പ്ലാൻ:</string>
+    <string name="premium_label">പ്രീമിയം:</string>
     <string name="loading">ലോഡ് ചെയ്യുന്നു...</string>
 
     <string name="emergency_contacts">അടിയന്തര കോൺടാക്റ്റുകൾ</string>
@@ -139,11 +136,10 @@
     <string name="gita_wisdom">ആത്മാവ് ജനിക്കുകയോ മരിക്കുകയോ ചെയ്യുന്നില്ല. നിങ്ങളുടെ ജോലി മാറ്റുക, എന്നാൽ നിങ്ങളുടെ ലക്ഷ്യം മാറ്റരുത്. നിങ്ങൾക്ക് ജോലി ചെയ്യാൻ അവകാശമുണ്ട്, എന്നാൽ ജോലിയുടെ ഫലത്തിന് ഒരിക്കലും അവകാശമില്ല.</string>
     <string name="veda_wisdom">സത്യം ഒന്നാണ്, എന്നാൽ ജ്ഞാനികൾ അതിനെ പലവിധത്തിൽ പറയുന്നു. മറ്റുള്ളവരാൽ നയിക്കപ്പെടരുത്, സ്വന്തം മനസ്സിനെ ഉണർത്തുക, പര്യവേക്ഷണം ചെയ്യുക, കണ്ടെത്തുക.</string>
     <string name="tts_init_failed">ടെക്സ്റ്റ്-ടു-സ്പീച്ച് ആരംഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു</string>
-    <string name="tts_lang_not_supported">ഭാಷ പിന്തുണയ്ക്കുന്നില്ല</string>
+    <string name="tts_lang_not_supported">ഭാഷ പിന്തുണയ്ക്കുന്നില്ല</string>
 
     <string name="game_over_win">കളി കഴിഞ്ഞു! പ്ലെയർ %1$s വിജയിച്ചു!</string>
     <string name="game_over_draw">കളി കഴിഞ്ഞു! ഇത് സമനില!</string>
     <string name="game_restart">കളി പുനരാരംഭിക്കുക</string>
     <string name="game_status_turn">പ്ലെയർ %1$s ൻറെ ഊഴം</string>
-
 </resources>

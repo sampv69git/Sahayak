@@ -17,53 +17,49 @@ class WelcomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_welcome, container, false)
 
-        // 1. Get User Name
         val prefs = requireContext().getSharedPreferences("SeniorCareApp", Context.MODE_PRIVATE)
         val currentUser = prefs.getString("CURRENT_USER", "") ?: ""
         val firstName = prefs.getString("${currentUser}_FIRST_NAME", "User")
 
-        // 2. Setup Header (IDs now match the XML I gave you)
         val tvWelcome = view.findViewById<TextView>(R.id.tv_welcome_message)
         val btnProfile = view.findViewById<ImageView>(R.id.btn_profile_icon)
 
-        // Use the string resource with placeholder for the name
         tvWelcome.text = getString(R.string.welcome_greeting, firstName)
 
-        // 3. Profile Click
         btnProfile.setOnClickListener {
             (activity as MainActivity).showFragment(ProfileFragment())
         }
 
-        // 4. Set up Card Listeners (IDs now match the XML I gave you)
+        // --- UPDATED LISTENERS (The Fix) ---
 
-        // SOS -> Call 100
+        // 1. SOS (Still calls 100 directly)
         view.findViewById<CardView>(R.id.card_sos).setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:100")
             startActivity(intent)
         }
 
-        // Pension
+        // 2. Pension -> Highlight Bottom Pension Tab
         view.findViewById<CardView>(R.id.card_pension).setOnClickListener {
-            (activity as MainActivity).showFragment(PensionFragment())
+            (activity as MainActivity).switchToTab(R.id.nav_pension)
         }
 
-        // Insurance
+        // 3. Insurance -> Highlight Bottom Insurance Tab
         view.findViewById<CardView>(R.id.card_insurance).setOnClickListener {
-            (activity as MainActivity).showFragment(InsuranceFragment())
+            (activity as MainActivity).switchToTab(R.id.nav_insurance)
         }
 
-        // Emergency Contacts
+        // 4. Emergency -> Highlight Bottom Emergency Tab
         view.findViewById<CardView>(R.id.card_emergency).setOnClickListener {
-            (activity as MainActivity).showFragment(EmergencyContactFragment())
+            (activity as MainActivity).switchToTab(R.id.nav_emergency)
         }
 
-        // Talkie
+        // 5. Talkie -> Highlight Bottom Talkie Tab
         view.findViewById<CardView>(R.id.card_talkie).setOnClickListener {
-            (activity as MainActivity).showFragment(TalkieFragment())
+            (activity as MainActivity).switchToTab(R.id.nav_talkie)
         }
 
-        // Funzone
+        // 6. Funzone (No bottom tab for this, so just show screen)
         view.findViewById<CardView>(R.id.card_funzone).setOnClickListener {
             (activity as MainActivity).showFragment(FunzoneFragment())
         }

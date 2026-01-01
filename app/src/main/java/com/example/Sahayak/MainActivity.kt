@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var prefs: SharedPreferences
-    private lateinit var bottomNavigation: BottomNavigationView
+    lateinit var bottomNavigation: BottomNavigationView
     private val PREFS_NAME = "SeniorCareApp"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         // 1. Setup Navigation Selection
         bottomNavigation.setOnItemSelectedListener { item ->
+            // I REMOVED the "if (item.isChecked)" check here.
+            // This ensures that even if the system thinks it's already selected,
+            // we still load the fragment when you click it.
             when (item.itemId) {
+                R.id.nav_home -> { showFragment(WelcomeFragment()); true }
                 R.id.nav_pension -> { showFragment(PensionFragment()); true }
                 R.id.nav_insurance -> { showFragment(InsuranceFragment()); true }
                 R.id.nav_emergency -> { showFragment(EmergencyContactFragment()); true }
@@ -33,7 +37,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // 2. Initial Checks
+        // 2. BACK STACK LISTENER
+        // Detects back button presses and updates the bottom highlight
+        supportFragmentManager.addOnBackStackChangedListener {
+            val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+            if (currentFragment != null) {
+                when (currentFragment) {
+                    is WelcomeFragment -> bottomNavigation.menu.findItem(R.id.nav_home).isChecked = true
+                    is PensionFragment -> bottomNavigation.menu.findItem(R.id.nav_pension).isChecked = true
+                    is InsuranceFragment -> bottomNavigation.menu.findItem(R.id.nav_insurance).isChecked = true
+                    is EmergencyContactFragment -> bottomNavigation.menu.findItem(R.id.nav_emergency).isChecked = true
+                    is TalkieFragment -> bottomNavigation.menu.findItem(R.id.nav_talkie).isChecked = true
+                }
+            }
+        }
+
+        // 3. Initial Checks
         if (savedInstanceState == null) {
             val currentUser = prefs.getString("CURRENT_USER", "") ?: ""
 
@@ -48,18 +67,29 @@ class MainActivity : AppCompatActivity() {
             val isProfileComplete = prefs.getBoolean("PROFILE_COMPLETE_$currentUser", false)
 
             if (isProfileComplete) {
-                // Ensure buttons are visible when app starts
                 updateNavigationVisibility()
+
+                // --- THE FIX IS HERE ---
+                // We manually load the WelcomeFragment immediately.
+                // We do this because the BottomNav might already be on "Home" by default,
+                // so selecting it programmatically might not trigger the listener.
                 showFragment(WelcomeFragment())
+
+                // Ensure the button is visually selected
+                bottomNavigation.selectedItemId = R.id.nav_home
             } else {
                 showFragment(CreateProfileFragment())
             }
         }
     }
 
-    // --- CRITICAL FIX: FORCE ALL BUTTONS TO BE VISIBLE ---
-    // Even if other fragments call this, it will now SHOW everything instead of hiding it.
+    // Helper to switch tabs programmatically
+    fun switchToTab(tabId: Int) {
+        bottomNavigation.selectedItemId = tabId
+    }
+
     fun updateNavigationVisibility() {
+        bottomNavigation.menu.findItem(R.id.nav_home).isVisible = true
         bottomNavigation.menu.findItem(R.id.nav_pension).isVisible = true
         bottomNavigation.menu.findItem(R.id.nav_insurance).isVisible = true
         bottomNavigation.menu.findItem(R.id.nav_emergency).isVisible = true

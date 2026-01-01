@@ -5,74 +5,119 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#F5F5F5">
+    android:background="?android:attr/windowBackground">
 
     <TextView
+        android:id="@+id/tvInsuranceHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/insurance_details"
-        android:textSize="22sp"
+        android:text="@string/insurance_title"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#6200EE"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="24dp"/>
 
-    <androidx.cardview.widget.CardView
+    <TextView
+        android:id="@+id/tvNoInsurance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="4dp"
-        app:cardCornerRadius="8dp"
-        app:contentPadding="16dp">
+        android:text="@string/no_insurance_record"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        android:textColor="?android:attr/textColorSecondary"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardInsuranceDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="?attr/colorSurface">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
+                android:id="@+id/tvStatusLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/insurance_status_label"
-                android:textSize="12sp"
-                android:textColor="#757575"/>
+                android:textSize="14sp"
+                android:textColor="?android:attr/textColorSecondary"/>
 
             <TextView
-                android:id="@+id/tvInsuranceStatus"
+                android:id="@+id/tvActiveStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="--"
-                android:textSize="18sp"
+                android:text="@string/status_active"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="?android:attr/textColorPrimary"
                 android:layout_marginBottom="16dp"/>
 
-            <View
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E0E0E0"
-                android:layout_marginBottom="16dp"/>
-
-            <TextView
-                android:id="@+id/tvInsuranceCompany"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="--"
-                android:textSize="16sp"
-                android:layout_marginBottom="8dp"/>
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:id="@+id/tvCompanyLabel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/company_label"
+                    android:textColor="?android:attr/textColorSecondary"/>
+                <TextView
+                    android:id="@+id/tvInsCompany"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/textColorPrimary"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvInsurancePlan"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="--"
-                android:textSize="16sp"
-                android:layout_marginBottom="8dp"/>
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:id="@+id/tvPlanLabel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plan_label"
+                    android:textColor="?android:attr/textColorSecondary"/>
+                <TextView
+                    android:id="@+id/tvInsPlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/textColorPrimary"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvInsurancePremium"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="--"
-                android:textSize="16sp"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tvPremiumLabel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/premium_label"
+                    android:textColor="?android:attr/textColorSecondary"/>
+                <TextView
+                    android:id="@+id/tvInsPremium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/textColorPrimary"/>
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
