@@ -4,7 +4,7 @@
 Sahayak (meaning "Helper") is a native Android application designed specifically to assist the elderly in their daily lives. With a focus on accessibility, large text, and high-contrast UI, it provides essential safety, financial, and entertainment tools in one easy-to-use interface.
 
 ## 🔗 Live Demo
-[📱 Click here to run Sahayak in your browser!]((https://appetize.io/app/b_tu2ijdd7dkexjfxplojwh2gpcu))
+[📱 Click here to run Sahayak in your browser!](https://appetize.io/app/b_tu2ijdd7dkexjfxplojwh2gpcu)
 
 ## 📱 Features
 
