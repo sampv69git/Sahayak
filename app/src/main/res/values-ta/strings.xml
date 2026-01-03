@@ -8,11 +8,13 @@
     <string name="welcome_greeting">வணக்கம், %1$s 🙏</string>
     <string name="welcome_user">வணக்கம், %1$s</string>
 
+    <string name="nav_home">முகப்பு</string>
     <string name="nav_pension">ஓய்வூதியம்</string>
     <string name="nav_insurance">காப்பீடு</string>
-    <string name="nav_emergency">SOS</string>
+    <string name="nav_emergency">அவசரம்</string>
     <string name="nav_talkie">டாக்கி</string>
     <string name="nav_funzone">ஃபன் ஜோன்</string>
+    <string name="home">முகப்பு</string>
 
     <string name="pension">ஓய்வூதியம்</string>
     <string name="insurance">காப்பீடு</string>
@@ -31,7 +33,7 @@
         <item>கன்னடம் (Kannada)</item>
         <item>தெலுங்கு (Telugu)</item>
         <item>தமிழ் (Tamil)</item>
-        <item>മലയാളം (Malayalam)</item>
+        <item>മലയാളம் (Malayalam)</item>
     </string-array>
     <string-array name="language_codes">
         <item>en</item>

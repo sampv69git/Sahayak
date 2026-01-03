@@ -8,11 +8,13 @@
     <string name="welcome_greeting">నమస్తే, %1$s 🙏</string>
     <string name="welcome_user">నమస్తే, %1$s</string>
 
+    <string name="nav_home">హోమ్</string>
     <string name="nav_pension">పెన్షన్</string>
     <string name="nav_insurance">బీమా</string>
-    <string name="nav_emergency">SOS</string>
+    <string name="nav_emergency">అత్యవసర</string>
     <string name="nav_talkie">టాకీ</string>
     <string name="nav_funzone">ఫన్ జోన్</string>
+    <string name="home">హోమ్</string>
 
     <string name="pension">పెన్షన్</string>
     <string name="insurance">భీమా</string>
@@ -42,7 +44,7 @@
     </string-array>
 
     <string name="username">వాడుకరిపేరు</string>
-    <string name="password">പാస్వర్డ్</string>
+    <string name="password">పాస్‌వర్డ్</string>
     <string name="login">లాగిన్</string>
     <string name="register">నమోదు చేసుకోండి</string>
     <string name="register_new_user">కొత్త వినియోగదారుని నమోదు చేయండి</string>
@@ -135,7 +137,7 @@
     <string name="wisdom_of_the_vedas">వేదాల జ్ఞానాన్ని మాట్లాడండి</string>
     <string name="gita_wisdom">ఆత్మ పుట్టదు, చావదు. నీ పనిని మార్చుకో, కానీ నీ లక్ష్యాన్ని కాదు. మీకు పని చేసే హక్కు ఉంది, కానీ పని ఫలంపై ఎప్పుడూ హక్కు లేదు.</string>
     <string name="veda_wisdom">సత్యం ఒక్కటే, కానీ జ్ఞానులు దానిని అనేక విధాలుగా చెబుతారు. ఇతరులచే నడిపించబడకండి, మీ స్వంత మనస్సును మేల్కొలపండి, అన్వేషించండి మరియు కనుగొనండి.</string>
-    <string name="tts_init_failed">టెక్స్ట్-ടു-స్పీచ్ ప్రారంభం విఫలమైంది</string>
+    <string name="tts_init_failed">టెక్స్ట్-టు-స్పీచ్ ప్రారంభం విఫలమైంది</string>
     <string name="tts_lang_not_supported">భాషకు మద్దతు లేదు</string>
 
     <string name="game_over_win">ఆట ముగిసింది! ఆటగాడు %1$s గెలిచారు!</string>

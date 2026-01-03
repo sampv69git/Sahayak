@@ -4,26 +4,24 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="@string/home" />
-
-    <item
-        android:id="@+id/nav_pension"
-        android:icon="@drawable/ic_pension"
-        android:title="@string/pension" />
+        android:title="@string/nav_home"/>  <item
+    android:id="@+id/nav_pension"
+    android:icon="@drawable/ic_pension"
+    android:title="@string/nav_pension"/>
 
     <item
         android:id="@+id/nav_insurance"
         android:icon="@drawable/ic_insurance"
-        android:title="@string/insurance" />
+        android:title="@string/nav_insurance"/>
 
     <item
         android:id="@+id/nav_emergency"
         android:icon="@drawable/ic_emergency"
-        android:title="@string/emergency_contact" />
+        android:title="@string/nav_emergency"/>
 
     <item
         android:id="@+id/nav_talkie"
         android:icon="@drawable/ic_talkie"
-        android:title="@string/talkie" />
+        android:title="@string/nav_talkie"/>
 
 </menu>

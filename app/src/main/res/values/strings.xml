@@ -14,6 +14,7 @@
     <string name="nav_talkie">Talkie</string>
     <string name="nav_funzone">Funzone</string>
     <string name="home">Home</string>
+    <string name="nav_home">Home</string>
 
     <string name="pension">Pension</string>
     <string name="insurance">Insurance</string>
